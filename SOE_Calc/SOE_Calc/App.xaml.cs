@@ -13,5 +13,6 @@ namespace SOE_Calc
     /// </summary>
     public partial class App : Application
     {
+
     }
 }
