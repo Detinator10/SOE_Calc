@@ -22,6 +22,10 @@
         <TextBox x:Name="Input2" HorizontalAlignment="Left" Height="18" Margin="84,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" TextInput="textInput" PreviewTextInput="InputVerification"/>
         <TextBox x:Name="Input3" HorizontalAlignment="Left" Height="18" Margin="131,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" TextInput="textInput" PreviewTextInput="InputVerification"/>
         <TextBox x:Name="Input4" HorizontalAlignment="Left" Height="18" Margin="171,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" TextInput="textInput" PreviewTextInput="InputVerification"/>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Height="26" Margin="131,93,0,0" VerticalAlignment="Top" Width="96" Click="button_Click"/>
+        <Button x:Name="button" Content="Calculate" HorizontalAlignment="Left" Height="26" Margin="68,90,0,0" VerticalAlignment="Top" Width="96" Click="button_Click"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="36,121,0,0" Width="20"><Run Text="x ="/><LineBreak/><Run/><LineBreak/><Run Text="y = "/><LineBreak/><Run/><LineBreak/><Run Text="z = "/></TextBlock>
+        <TextBlock x:Name="xValue" HorizontalAlignment="Left" Margin="61,121,0,0" TextWrapping="Wrap" Text="____" VerticalAlignment="Top"/>
+        <TextBlock x:Name="yValue" HorizontalAlignment="Left" Margin="61,152,0,0" TextWrapping="Wrap" Text="____" VerticalAlignment="Top"/>
+        <TextBlock x:Name="zValue" HorizontalAlignment="Left" Margin="61,185,0,0" TextWrapping="Wrap" Text="____" VerticalAlignment="Top"/>
     </Grid>
 </Window>

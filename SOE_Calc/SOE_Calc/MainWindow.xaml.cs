@@ -21,6 +21,7 @@ namespace SOE_Calc
     /// </summary>
     public partial class MainWindow : Window
     {
+        double[,] matrixcopy = new double[3,4];
         string[] Inputs;
         double[,] matrix = new double[3, 4];
 
@@ -47,9 +48,55 @@ namespace SOE_Calc
             return !regex.IsMatch(text);
         }
 
-        private void SolveMatrix(double[,] matrix)
+        private void SolveMatrix()
         {
-            
+            matrixcopy = (double[,])matrix.Clone();
+            MatrixRowMultiply(0, matrix[1, 1]);
+            MatrixRowMultiply(1, matrix[0, 1]);
+            RowAddition(1, 0, 0);
+            matrixcopy = (double[,])matrix.Clone();
+
+            MatrixRowMultiply(1, matrix[2, 1]);
+            MatrixRowMultiply(2, matrix[1, 1]);
+            RowAddition(1, 2, 2);
+            matrixcopy = (double[,])matrix.Clone();
+
+            MatrixRowMultiply(2, matrix[0, 2]);
+            MatrixRowMultiply(0, matrix[2, 2]);
+            RowAddition(2, 0, 0);
+            matrixcopy = (double[,])matrix.Clone();
+
+            MatrixRowMultiply(2, matrix[0, 2]);
+            MatrixRowMultiply(0, matrix[2, 2]);
+            RowAddition(2, 0, 0);
+            matrixcopy = (double[,])matrix.Clone();
+
+            MatrixRowMultiply(1, matrix[0, 0]);
+            MatrixRowMultiply(0, matrix[1, 0]);
+            RowAddition(0, 1, 1);
+            matrixcopy = (double[,])matrix.Clone();
+
+            MatrixRowMultiply(0, matrix[2, 0]);
+            MatrixRowMultiply(2, matrix[0, 0]);
+            RowAddition(0, 2, 2);
+            matrixcopy = (double[,])matrix.Clone();
+
+            MatrixRowMultiply(1, matrix[2, 2]);
+            MatrixRowMultiply(2, matrix[1, 2]);
+            RowAddition(2, 1, 1);
+            matrixcopy = (double[,])matrix.Clone();
+
+            int column = 0;
+            for(int row = 0; row < 3; row++)
+            {
+
+                matrix[row, matrix.GetLength(1) - 1] = matrix[row, matrix.GetLength(1)-1] / matrix[row, column];
+                matrix[row, column] = 1;
+                column++;
+            }
+            Console.WriteLine(matrix[0, 0].ToString() + " " + matrix[0, 1].ToString() + " " + matrix[0, 2].ToString() + " " + matrix[0, 3].ToString() + " " +
+    matrix[1, 0].ToString() + " " + matrix[1, 1].ToString() + " " + matrix[1, 2].ToString() + " " + matrix[1, 3].ToString() + " " +
+    matrix[2, 0].ToString() + " " + matrix[2, 1].ToString() + " " + matrix[2, 2].ToString() + " " + matrix[2, 3].ToString());
         }
         private void button_Click(object sender, RoutedEventArgs e)
         {
@@ -68,17 +115,55 @@ namespace SOE_Calc
                 }
                 else
                 {
-
                     matrix[y, x] = Convert.ToDouble(Inputs[z]);
                     x++;
                 }
 
 
             }
+
             Console.Write(matrix[0,0].ToString() + " " + matrix[0, 1].ToString() + " " + matrix[0, 2].ToString() + " " + matrix[0, 3].ToString() + " " +
                 matrix[1, 0].ToString() + " " + matrix[1, 1].ToString() + " " + matrix[1, 2].ToString() + " " + matrix[1, 3].ToString() + " " +
                 matrix[2, 0].ToString() + " " + matrix[2, 1].ToString() + " " + matrix[2, 2].ToString() + " " + matrix[2, 3].ToString());
+            SolveMatrix();
+            DisplaySolution();
 
+        }
+
+        void MatrixRowMultiply (int row, double scalar)
+        {
+            for (int y = 0; y < matrix.GetLength(1); y++)
+            {
+                matrixcopy[row, y] *= scalar;
+            }
+        }
+        void MatrixRowReplace(int row, double[] matrixrow)
+        {
+            int y = 0;
+                foreach (double a in matrixrow)
+            {
+
+                matrix[row, y] = a;
+                y++;
+            }
+        }
+
+        void RowAddition(int row1, int row2, int rowwrite)
+        {
+            MatrixRowMultiply(row2, -1);
+            for(int y = 0; y < matrix.GetLength(1); y++)
+            {
+                Console.WriteLine(matrix[row1, y].ToString());
+                Console.Write(matrix[row2, y].ToString());
+                matrix[rowwrite, y] = matrixcopy[row1, y] + matrixcopy[row2, y];
+            }
+        }
+
+        void DisplaySolution()
+        {
+            xValue.Text = matrix[0, matrix.GetLength(1)-1].ToString();
+            yValue.Text = matrix[1, matrix.GetLength(1)-1].ToString();
+            zValue.Text = matrix[2, matrix.GetLength(1)-1].ToString();
         }
     }
 }
