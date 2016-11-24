@@ -107,6 +107,14 @@ namespace SOE_Calc
             Inputs = new string[12] { Input1.Text, Input2.Text, Input3.Text, Input4.Text, Input5.Text, Input6.Text, Input7.Text, Input8.Text, Input9.Text, Input10.Text, Input11.Text, Input12.Text };
             int x = 0;
             int y = 0;
+
+            foreach(string text in Inputs)
+            {
+                if(text == "")
+                {
+                    return;
+                }
+            }
             for (int z = 0; z < 12; z++)
             {
 
@@ -178,9 +186,27 @@ namespace SOE_Calc
             }
             Array.Clear(matrix,0,12);
 
-            xValue.Text = "___";
-            yValue.Text = "___";
-            zValue.Text = "___";
+            xValue.Text = "____";
+            yValue.Text = "____";
+            zValue.Text = "____";
+        }
+
+        private void CopyXClick(object sender, RoutedEventArgs e)
+        {
+            if(xValue.Text != "____")
+                Clipboard.SetText(xValue.Text);
+        }
+
+        private void CopyYClick(object sender, RoutedEventArgs e)
+        {
+            if (yValue.Text != "____")
+                Clipboard.SetText(yValue.Text);
+        }
+
+        private void CopyZClick(object sender, RoutedEventArgs e)
+        {
+            if (zValue.Text != "____")
+                Clipboard.SetText(zValue.Text);
         }
     }
 }

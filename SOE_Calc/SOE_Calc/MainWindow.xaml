@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SOE_Calc"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Systems Of Equations Calculator" Height="350" Width="525">
     <Grid>
+        <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="36,10,0,0" TextWrapping="Wrap" Text="        x +         y +        z =         " VerticalAlignment="Top" Height="18" Width="165"/>
+        <TextBox x:Name="Input1" HorizontalAlignment="Left" Height="18" Margin="36,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" TextInput="textInput" PreviewTextInput="InputVerification"/>
+        <TextBox x:Name="Input2" HorizontalAlignment="Left" Height="18" Margin="84,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" TextInput="textInput" PreviewTextInput="InputVerification"/>
+        <TextBox x:Name="Input3" HorizontalAlignment="Left" Height="18" Margin="131,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" TextInput="textInput" PreviewTextInput="InputVerification"/>
+        <TextBox x:Name="Input4" HorizontalAlignment="Left" Height="18" Margin="171,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" TextInput="textInput" PreviewTextInput="InputVerification"/>
         <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="36,33,0,0" TextWrapping="Wrap" Text="        x +         y +        z =         " VerticalAlignment="Top" Height="18" Width="165"/>
         <TextBox x:Name="Input5" HorizontalAlignment="Left" Height="18" Margin="36,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" TextInput="textInput" PreviewTextInput="InputVerification"/>
         <TextBox x:Name="Input6" HorizontalAlignment="Left" Height="18" Margin="84,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" TextInput="textInput" PreviewTextInput="InputVerification"/>
@@ -17,16 +22,26 @@
         <TextBox x:Name="Input10" HorizontalAlignment="Left" Height="18" Margin="84,56,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" TextInput="textInput" PreviewTextInput="InputVerification"/>
         <TextBox x:Name="Input11" HorizontalAlignment="Left" Height="18" Margin="131,56,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" TextInput="textInput" PreviewTextInput="InputVerification"/>
         <TextBox x:Name="Input12" HorizontalAlignment="Left" Height="18" Margin="171,56,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" TextInput="textInput" PreviewTextInput="InputVerification"/>
-        <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="36,10,0,0" TextWrapping="Wrap" Text="        x +         y +        z =         " VerticalAlignment="Top" Height="18" Width="165"/>
-        <TextBox x:Name="Input1" HorizontalAlignment="Left" Height="18" Margin="36,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" TextInput="textInput" PreviewTextInput="InputVerification"/>
-        <TextBox x:Name="Input2" HorizontalAlignment="Left" Height="18" Margin="84,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" TextInput="textInput" PreviewTextInput="InputVerification"/>
-        <TextBox x:Name="Input3" HorizontalAlignment="Left" Height="18" Margin="131,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" TextInput="textInput" PreviewTextInput="InputVerification"/>
-        <TextBox x:Name="Input4" HorizontalAlignment="Left" Height="18" Margin="171,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="20" TextInput="textInput" PreviewTextInput="InputVerification"/>
-        <Button x:Name="button" Content="Calculate" HorizontalAlignment="Left" Height="26" Margin="68,90,0,0" VerticalAlignment="Top" Width="96" Click="button_Click"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="36,121,0,0" Width="20"><Run Text="x ="/><LineBreak/><Run/><LineBreak/><Run Text="y = "/><LineBreak/><Run/><LineBreak/><Run Text="z = "/></TextBlock>
-        <TextBlock x:Name="xValue" HorizontalAlignment="Left" Margin="61,121,0,0" TextWrapping="Wrap" Text="____" VerticalAlignment="Top"/>
-        <TextBlock x:Name="yValue" HorizontalAlignment="Left" Margin="61,152,0,0" TextWrapping="Wrap" Text="____" VerticalAlignment="Top"/>
-        <TextBlock x:Name="zValue" HorizontalAlignment="Left" Margin="61,185,0,0" TextWrapping="Wrap" Text="____" VerticalAlignment="Top"/>
-        <Button x:Name="button1" Content="Clear" HorizontalAlignment="Left" Height="26" Margin="191,90,0,0" VerticalAlignment="Top" Width="31" Click="ClearButtonClick"/>
+        <Button x:Name="button" Content="Calculate" HorizontalAlignment="Left" Height="26" Margin="36,79,0,0" VerticalAlignment="Top" Width="96" Click="button_Click"/>
+        <Button x:Name="button1" Content="Clear" HorizontalAlignment="Left" Height="26" Margin="160,79,0,0" VerticalAlignment="Top" Width="31" Click="ClearButtonClick"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="62,126,0,0" Width="20"><Run Text="x ="/><LineBreak/><Run/><LineBreak/><Run Text="y = "/><LineBreak/><Run/><LineBreak/><Run Text="z = "/></TextBlock>
+        <TextBlock x:Name="xValue" HorizontalAlignment="Left" Margin="87,126,0,0" TextWrapping="Wrap" Text="____" VerticalAlignment="Top"/>
+        <TextBlock x:Name="yValue" HorizontalAlignment="Left" Margin="87,156,0,0" TextWrapping="Wrap" Text="____" VerticalAlignment="Top"/>
+        <TextBlock x:Name="zValue" HorizontalAlignment="Left" Margin="87,190,0,0" TextWrapping="Wrap" Text="____" VerticalAlignment="Top"/>
+        <Button x:Name="ÇopyX" HorizontalAlignment="Left" VerticalAlignment="Top" Height="23" Width="22" Margin="36,118,0,0" Click="CopyXClick">
+            <StackPanel Orientation="Horizontal">
+                <Image Source=" Resources/copySymbol.jpg"/>
+            </StackPanel>
+        </Button>
+        <Button x:Name="CopyY" HorizontalAlignment="Left" VerticalAlignment="Top" Height="23" Width="22" Margin="36,150,0,0" Click="CopyYClick">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="Resources/copySymbol.jpg"/>
+            </StackPanel>
+        </Button>
+        <Button x:Name="CopyZ" HorizontalAlignment="Left" VerticalAlignment="Top" Height="23" Width="22" Margin="36,182,0,0" Click="CopyZClick">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="Resources/copySymbol.jpg"/>
+            </StackPanel>
+        </Button>
     </Grid>
 </Window>
