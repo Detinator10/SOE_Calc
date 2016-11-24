@@ -24,11 +24,15 @@ namespace SOE_Calc
         double[,] matrixcopy = new double[3,4];
         string[] Inputs;
         double[,] matrix = new double[3, 4];
+        TextBox[] InputsText;
 
         public MainWindow()
         {
             //Inputs = new TextBox[12] {  Input1, Input2, Input3, Input4, Input5, Input6, Input7, Input8, Input9, Input10, Input11, Input12 };
+
             InitializeComponent();
+            Inputs = new string[12] { Input1.Text, Input2.Text, Input3.Text, Input4.Text, Input5.Text, Input6.Text, Input7.Text, Input8.Text, Input9.Text, Input10.Text, Input11.Text, Input12.Text };
+            InputsText = new TextBox[12] { Input1, Input2, Input3, Input4, Input5, Input6, Input7, Input8, Input9, Input10, Input11, Input12 };
         }
 
         private void textInput(object sender, TextCompositionEventArgs e)
@@ -164,6 +168,19 @@ namespace SOE_Calc
             xValue.Text = matrix[0, matrix.GetLength(1)-1].ToString();
             yValue.Text = matrix[1, matrix.GetLength(1)-1].ToString();
             zValue.Text = matrix[2, matrix.GetLength(1)-1].ToString();
+        }
+
+        private void ClearButtonClick(object sender, RoutedEventArgs e)
+        {
+            for(int x = 0; x < 12; x++)
+            {
+                InputsText[x].Text = null;
+            }
+            Array.Clear(matrix,0,12);
+
+            xValue.Text = "___";
+            yValue.Text = "___";
+            zValue.Text = "___";
         }
     }
 }

@@ -27,5 +27,6 @@
         <TextBlock x:Name="xValue" HorizontalAlignment="Left" Margin="61,121,0,0" TextWrapping="Wrap" Text="____" VerticalAlignment="Top"/>
         <TextBlock x:Name="yValue" HorizontalAlignment="Left" Margin="61,152,0,0" TextWrapping="Wrap" Text="____" VerticalAlignment="Top"/>
         <TextBlock x:Name="zValue" HorizontalAlignment="Left" Margin="61,185,0,0" TextWrapping="Wrap" Text="____" VerticalAlignment="Top"/>
+        <Button x:Name="button1" Content="Clear" HorizontalAlignment="Left" Height="26" Margin="191,90,0,0" VerticalAlignment="Top" Width="31" Click="ClearButtonClick"/>
     </Grid>
 </Window>
