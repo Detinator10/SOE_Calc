@@ -25,6 +25,7 @@ namespace SOE_Calc
         string[] Inputs;
         double[,] matrix = new double[3, 4];
         TextBox[] InputsText;
+        bool XYZ=true;
 
         public MainWindow()
         {
@@ -54,41 +55,62 @@ namespace SOE_Calc
 
         private void SolveMatrix()
         {
-            matrixcopy = (double[,])matrix.Clone();
-            MatrixRowMultiply(0, matrix[1, 1]);
-            MatrixRowMultiply(1, matrix[0, 1]);
-            RowAddition(1, 0, 0);
-            matrixcopy = (double[,])matrix.Clone();
+            if (matrix[0, 1] != 0)
+            {
+                matrixcopy = (double[,])matrix.Clone();
+                MatrixRowMultiply(0, matrix[1, 1]);
+                MatrixRowMultiply(1, matrix[0, 1]);
+                RowAddition(1, 0, 0);
+                matrixcopy = (double[,])matrix.Clone();
+            }
 
-            MatrixRowMultiply(1, matrix[2, 1]);
-            MatrixRowMultiply(2, matrix[1, 1]);
-            RowAddition(1, 2, 2);
-            matrixcopy = (double[,])matrix.Clone();
+            if (matrix[2, 1] != 0)
+            {
+                MatrixRowMultiply(1, matrix[2, 1]);
+                MatrixRowMultiply(2, matrix[1, 1]);
+                RowAddition(1, 2, 2);
+                matrixcopy = (double[,])matrix.Clone();
+            }
 
-            MatrixRowMultiply(2, matrix[0, 2]);
-            MatrixRowMultiply(0, matrix[2, 2]);
-            RowAddition(2, 0, 0);
-            matrixcopy = (double[,])matrix.Clone();
+            if (matrix[0, 2] != 0)
+            {
+                MatrixRowMultiply(2, matrix[0, 2]);
+                MatrixRowMultiply(0, matrix[2, 2]);
+                RowAddition(2, 0, 0);
+                matrixcopy = (double[,])matrix.Clone();
+            }
 
-            MatrixRowMultiply(2, matrix[0, 2]);
-            MatrixRowMultiply(0, matrix[2, 2]);
-            RowAddition(2, 0, 0);
-            matrixcopy = (double[,])matrix.Clone();
+            if (matrix[0, 1] != 0)
+            {
+                MatrixRowMultiply(2, matrix[0, 2]);
+                MatrixRowMultiply(0, matrix[2, 2]);
+                RowAddition(2, 0, 0);
+                matrixcopy = (double[,])matrix.Clone();
+            }
 
-            MatrixRowMultiply(1, matrix[0, 0]);
-            MatrixRowMultiply(0, matrix[1, 0]);
-            RowAddition(0, 1, 1);
-            matrixcopy = (double[,])matrix.Clone();
+            if (matrix[1,0] != 0)
+            {
+                MatrixRowMultiply(1, matrix[0, 0]);
+                MatrixRowMultiply(0, matrix[1, 0]);
+                RowAddition(0, 1, 1);
+                matrixcopy = (double[,])matrix.Clone();
+            }
 
-            MatrixRowMultiply(0, matrix[2, 0]);
-            MatrixRowMultiply(2, matrix[0, 0]);
-            RowAddition(0, 2, 2);
-            matrixcopy = (double[,])matrix.Clone();
+            if (matrix[2,0] != 0)
+            {
+                MatrixRowMultiply(0, matrix[2, 0]);
+                MatrixRowMultiply(2, matrix[0, 0]);
+                RowAddition(0, 2, 2);
+                matrixcopy = (double[,])matrix.Clone();
+            }
 
-            MatrixRowMultiply(1, matrix[2, 2]);
-            MatrixRowMultiply(2, matrix[1, 2]);
-            RowAddition(2, 1, 1);
-            matrixcopy = (double[,])matrix.Clone();
+            if (matrix[1,2] != 0)
+            {
+                MatrixRowMultiply(1, matrix[2, 2]);
+                MatrixRowMultiply(2, matrix[1, 2]);
+                RowAddition(2, 1, 1);
+                matrixcopy = (double[,])matrix.Clone();
+            }
 
             int column = 0;
             for(int row = 0; row < 3; row++)
@@ -207,6 +229,47 @@ namespace SOE_Calc
         {
             if (zValue.Text != "____")
                 Clipboard.SetText(zValue.Text);
+        }
+
+        private void VariableChange(object sender, RoutedEventArgs e)
+        {
+
+
+            if (XYZ == true)
+            {
+                VariableButton.Content = "XY";
+                InputsText[2].Text = "0";
+                InputsText[6].Text = "0";
+                InputsText[8].Text = "0";
+                InputsText[9].Text = "0";
+                InputsText[10].Text = "0";
+                InputsText[11].Text = "0";
+                InputsText[2].IsEnabled = false;
+                InputsText[6].IsEnabled = false;
+                InputsText[8].IsEnabled = false;
+                InputsText[9].IsEnabled = false;
+                InputsText[10].IsEnabled = false;
+                InputsText[11].IsEnabled = false;
+                XYZ = false;
+            }
+            else if (XYZ == false)
+            {
+                VariableButton.Content = "XYZ";
+                InputsText[2].IsEnabled = true;
+                InputsText[6].IsEnabled = true;
+                InputsText[8].IsEnabled = true;
+                InputsText[9].IsEnabled = true;
+                InputsText[10].IsEnabled = true;
+                InputsText[11].IsEnabled = true;
+                InputsText[2].Text = "";
+                InputsText[6].Text = "";
+                InputsText[8].Text = "";
+                InputsText[9].Text = "";
+                InputsText[10].Text = "";
+                InputsText[11].Text = "";
+                XYZ = true;
+            }
+
         }
     }
 }

@@ -43,5 +43,6 @@
                 <Image Source="Resources/copySymbol.jpg"/>
             </StackPanel>
         </Button>
+        <Button x:Name="VariableButton" Content="XYZ" HorizontalAlignment="Left" Height="26" Margin="201,79,0,0" VerticalAlignment="Top" Width="48" Click="VariableChange"/>
     </Grid>
 </Window>
